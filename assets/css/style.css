@@ -1,3 +1,23 @@
 * {
     font-family: 'Merriweather Sans', sans-serif;
 }
+
+.bg-gradient {
+    background-color: #5530D3;
+    color: white;
+}
+
+#custom-button {
+    background-color: #5530D3;
+    color: white;
+}
+
+#custom-button:hover {
+    background-color: #6456F0;
+    color: black;
+}
+
+main {
+    width: 75%;
+    padding: 15px;
+}
