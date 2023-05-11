@@ -7,23 +7,29 @@
     color: white;
 }
 
-#custom-button {
+#search-button {
     background-color: #5530D3;
     color: white;
 }
 
-#custom-button:hover {
+#search-button:hover {
     background-color: #6456F0;
     color: black;
 }
 
-#clear-history:hover {
-    background-color: #6456F0;
-    color: black;
-}
 
 .list-group-item {
     cursor: pointer;
+}
+
+#clear-button {
+    background-color: #5530D3;
+    color: white;
+}
+
+#clear-button:hover {
+    background-color: #6456F0;
+    color: black;
 }
 
 main {
