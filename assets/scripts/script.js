@@ -42,3 +42,26 @@ $(document).ready(function () {
     if (history.length > 7) cityEight.textContent = history[7];
   }
 }
+
+ //function to save the user input as a search value
+ $("#search-button").on("click", function(){
+    var searchValue = $("#search-value").val();
+    console.log(searchValue);
+    $("#search-value").val("");
+    saveSearchHistory(searchValue);
+    searchWeather(searchValue);
+    
+});
+
+    //function that saves search history to local storage
+    function saveSearchHistory(searchValue) {
+        let searchHistory = JSON.parse(localStorage.getItem("history")) || [];
+        searchHistory.push(searchValue);
+        localStorage.setItem("history", JSON.stringify(searchHistory));
+
+        // update the city elements on the UI
+        let cityElements = [cityOne, cityTwo, cityThree, cityFour, cityFive, citySix, citySeven, cityEight];
+        for (let i = 0; i < searchHistory.length && i < cityElements.length; i++) {
+        cityElements[i].textContent = searchHistory[i];
+        }
+    }
