@@ -65,3 +65,26 @@ $(document).ready(function () {
         cityElements[i].textContent = searchHistory[i];
         }
     }
+
+     //APIkey from openweatherAPI
+     let APIkey ="5e7c300090fc006e727aed7871c6a2eb"
+
+     for (let i = 0; i < history.length; i++) {
+         let city = document.getElementById(`city-${i+1}`);
+         city.onclick = function() {
+           searchWeather(history[i]);
+         };
+       }
+       
+     //fetch call with the user input
+     function searchWeather(searchValue) {
+         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searchValue}&appid=${APIkey}`)
+             .then(response => {
+                 if (!response.ok) {
+                     throw new Error('Network response was not ok');
+                 }
+                 return response.json();
+             })
+             .then(data => {
+                 console.log(data,"Data 1");
+ 
