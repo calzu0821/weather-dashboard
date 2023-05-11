@@ -43,8 +43,8 @@ $(document).ready(function () {
   }
 }
 
- //function to save the user input as a search value
- $("#search-button").on("click", function(){
+//function to save the user input as a search value
+$("#search-button").on("click", function(){
     var searchValue = $("#search-value").val();
     console.log(searchValue);
     $("#search-value").val("");
@@ -66,25 +66,46 @@ $(document).ready(function () {
         }
     }
 
-     //APIkey from openweatherAPI
-     let APIkey ="5e7c300090fc006e727aed7871c6a2eb"
+    //APIkey from openweatherAPI
+    let APIkey ="5e7c300090fc006e727aed7871c6a2eb"
 
-     for (let i = 0; i < history.length; i++) {
-         let city = document.getElementById(`city-${i+1}`);
-         city.onclick = function() {
-           searchWeather(history[i]);
-         };
-       }
+    for (let i = 0; i < history.length; i++) {
+        let city = document.getElementById(`city-${i+1}`);
+        city.onclick = function() {
+        searchWeather(history[i]);
+        };
+    }
        
-     //fetch call with the user input
-     function searchWeather(searchValue) {
-         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searchValue}&appid=${APIkey}`)
-             .then(response => {
-                 if (!response.ok) {
-                     throw new Error('Network response was not ok');
-                 }
-                 return response.json();
-             })
-             .then(data => {
-                 console.log(data,"Data 1");
+    //fetch call with the user input
+    function searchWeather(searchValue) {
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searchValue}&appid=${APIkey}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log(data,"Data 1");
+    //formula to convert Kelvin to Fahrenheit 
+    let tempF = ((data.main.temp - 273.15) * 1.80 + 32).toFixed(1);
+        
+    //setting variables for lattitude and longitude for API call
+    let lattitude = data.coord.lat
+    let longitude = data.coord.lon
+
+    //grabbing the values from the data object and assigning them to HTML ids
+    $(".forecast-temp").text("Temperature: " + tempF + " °F")
+    $(".forecast-hws").text("Humidity: " + data.main.humidity + "%")
+    $(".forecast-ws").text("Wind: " + data.wind.speed + " MPH")
+
+    //second fetch call to get the five day forecast
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lattitude}&lon=${longitude}&appid=${APIkey}`)
+    .then(response => response.json())
+    .then(data2 => {
+      console.log(data2,"Data 2");
+  
+    function timeConverter(date) {
+        return new Date(date).toLocaleDateString();
+    }
  
