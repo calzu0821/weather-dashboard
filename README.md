@@ -34,7 +34,7 @@ To use the Weather Dashboard, follow these steps:
 
 Deployed website:
 
-
+https://calzu0821.github.io/weather-dashboard/
 
 Screenshot of the Weather Dashboard:
 

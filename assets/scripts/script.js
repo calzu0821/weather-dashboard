@@ -69,13 +69,20 @@ $("#search-button").on("click", function(){
     //APIkey from openweatherAPI
     let APIkey ="5e7c300090fc006e727aed7871c6a2eb"
 
+    if (!history) {
+        history = [];
+    }
+    
     for (let i = 0; i < history.length; i++) {
         let city = document.getElementById(`city-${i+1}`);
-        city.onclick = function() {
-        searchWeather(history[i]);
-        };
+        if (city) { 
+            city.onclick = function() {
+                $("#search-value").val(history[i]);
+                searchWeather(history[i]);
+            };
+        }
     }
-       
+    
     //fetch call with the user input
     function searchWeather(searchValue) {
         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searchValue}&appid=${APIkey}`)
@@ -195,4 +202,3 @@ $("#search-button").on("click", function(){
         }
     }
 )
- 
