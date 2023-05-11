@@ -154,4 +154,45 @@ $("#search-button").on("click", function(){
           $("#icon-four").attr("src", iconURL + data2.list[32].weather[0].icon + ".png");
           $("#icon-five").attr("src", iconURL + data2.list[39].weather[0].icon + ".png");
         }
+
+        //Kelvin to Fahrenheit formula
+        let tempFOne = ((data2.list[8].main.temp - 273.15) * 1.80 + 32).toFixed(1);
+        let tempFTwo = ((data2.list[16].main.temp - 273.15) * 1.80 + 32).toFixed(1);
+        let tempFThree = ((data2.list[24].main.temp - 273.15) * 1.80 + 32).toFixed(1);
+        let tempFFour = ((data2.list[32].main.temp - 273.15) * 1.80 + 32).toFixed(1);
+        let tempFFive = ((data2.list[39].main.temp - 273.15) * 1.80 + 32).toFixed(1);
+
+        //grabbing the forecast temp and assigning them to the HTML
+        $(".forecast-temp-one").text("Temp: " + tempFOne + " °F");
+        $(".forecast-temp-two").text("Temp: " + tempFTwo + " °F");
+        $(".forecast-temp-three").text("Temp: " + tempFThree + " °F");
+        $(".forecast-temp-four").text("Temp: " + tempFFour + " °F");
+        $(".forecast-temp-five").text("Temp: " + tempFFive + " °F");
+
+        //grabbing the forecast humidity data and assigning them to the HTML
+        $(".forecast-hum-one").text("Humidity: " + data2.list[8].main.humidity + "%");
+        $(".forecast-hum-two").text("Humidity: " + data2.list[16].main.humidity + "%");
+        $(".forecast-hum-three").text("Humidity: " + data2.list[24].main.humidity + "%");
+        $(".forecast-hum-four").text("Humidity: " + data2.list[32].main.humidity + "%");
+        $(".forecast-hum-five").text("Humidity: " + data2.list[39].main.humidity + "%");
+
+        //grabbing the forecast wind speed data and assigning them to the HTML
+        $(".forecast-ws-one").text("Wind: " + data2.list[8].wind.speed + " MPH");
+        $(".forecast-ws-two").text("Wind: " + data2.list[16].wind.speed + " MPH");
+        $(".forecast-ws-three").text("Wind: " + data2.list[24].wind.speed + " MPH");
+        $(".forecast-ws-four").text("Wind: " + data2.list[32].wind.speed + " MPH");
+        $(".forecast-ws-five").text("Wind: " + data2.list[39].wind.speed + " MPH");
+        })
+
+            .catch(error => {
+            console.error('Error:', error);
+            });
+        }
+     )
+            .catch(error => {
+            console.error('Error:', error);
+            });
+        }
+    }
+)
  
