@@ -141,4 +141,17 @@ $("#search-button").on("click", function(){
         $(".date-4").text("");
         $(".date-5").text("");
       }
+
+      //url for the icons
+      let iconURL = "https://openweathermap.org/img/w/";
+
+      //grabbing icon value and assigning them to the HTML
+      if (data2.list && data2.list.length > 0) {
+          $("#icon-main").attr("src", iconURL + data2.list[0].weather[0].icon + ".png");
+          $("#icon-one").attr("src", iconURL + data2.list[8].weather[0].icon + ".png");
+          $("#icon-two").attr("src", iconURL + data2.list[16].weather[0].icon + ".png");
+          $("#icon-three").attr("src", iconURL + data2.list[24].weather[0].icon + ".png");
+          $("#icon-four").attr("src", iconURL + data2.list[32].weather[0].icon + ".png");
+          $("#icon-five").attr("src", iconURL + data2.list[39].weather[0].icon + ".png");
+        }
  
