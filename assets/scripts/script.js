@@ -108,4 +108,37 @@ $("#search-button").on("click", function(){
     function timeConverter(date) {
         return new Date(date).toLocaleDateString();
     }
+    //setting variables for the various days of the forecast
+    if (data2.list && data2.list.length >= 6) {
+        const today = dayjs().format('MM/DD/YYYY');
+        const dayOne = dayjs(data2.list[8].dt * 1000).format('MM/DD/YYYY');
+        const dayTwo = dayjs(data2.list[16].dt * 1000).format('MM/DD/YYYY');
+        const dayThree = dayjs(data2.list[24].dt * 1000).format('MM/DD/YYYY');
+        const dayFour = dayjs(data2.list[32].dt * 1000).format('MM/DD/YYYY');
+        const dayFive = dayjs(data2.list[39].dt * 1000).format('MM/DD/YYYY');
+      
+        //grabbing the forecast date and assigning them to the HTML
+        $(".forecast-ones").text(timeConverter(dayOne));
+        $(".forecast-twos").text(timeConverter(dayTwo));
+        $(".forecast-threes").text(timeConverter(dayThree));
+        $(".forecast-fours").text(timeConverter(dayFour));
+        $(".forecast-fives").text(timeConverter(dayFive));
+      
+        // Grabbing city name value and assigning them to the HTML
+        $(".city-name").text(searchValue + " " + today);
+        $(".date-1").text(dayOne);
+        $(".date-2").text(dayTwo);
+        $(".date-3").text(dayThree);
+        $(".date-4").text(dayFour);
+        $(".date-5").text(dayFive);
+        
+      } else {
+        // Display an error message or fallback text
+        $(".city-name").text("Forecast data unavailable");
+        $(".date-1").text("");
+        $(".date-2").text("");
+        $(".date-3").text("");
+        $(".date-4").text("");
+        $(".date-5").text("");
+      }
  
