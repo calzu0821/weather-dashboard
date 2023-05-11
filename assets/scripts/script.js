@@ -7,3 +7,12 @@ var queryURL = "api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" +
 
 // Make the API call using fetch
 fetch(queryURL)
+    .then(response => response.json())
+    .then(data => {
+    // Code to handle the API response goes here
+    console.log(data); // Example: log the data to the console
+    })
+    .catch(error => {
+    // Code to handle errors goes here
+    console.error(error); // Example: log the error to the console
+    });
